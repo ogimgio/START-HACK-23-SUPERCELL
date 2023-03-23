@@ -6,7 +6,7 @@ from PIL import Image
 pd.set_option("display.max_rows",40)
 # pd.set_option("display.max_columns", 10)
 
-image = Image.open('img1.png')
+image = Image.open('images/img1.png')
 st.image(image)
 
 def query_text(payload, model_id, api_token):
@@ -270,5 +270,5 @@ for i in range(1,4):
 
 
 st.markdown("## Automation Part 3 - Moderation System")
-image = Image.open('moderator_sys.jpeg')
+image = Image.open('images/moderator_sys.jpeg')
 st.image(image, caption='Offensive Image')
