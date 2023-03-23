@@ -207,7 +207,10 @@ if st.button('Send') or st.session_state.load_state:
         if user_input:
             is_offensive = query_text(user_input, model_id_text, api_token)
             print(is_offensive)
-            example_data = is_offensive[0]
+            try:
+                example_data = is_offensive[0]
+            except:
+                st.error("Something went wrong! Please try again later.")
             # Sort the label-score pairs by score in descending order
             sorted_data = sorted(example_data, key=lambda x: x['score'], reverse=True)
             # Get the label with the highest score
