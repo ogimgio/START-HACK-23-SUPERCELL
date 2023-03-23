@@ -17,8 +17,7 @@ def query_text(payload, model_id, api_token):
 
 model_id_text = "cardiffnlp/twitter-roberta-base-offensive"
 model_id_image = "ogimgio/start-hack-supercell"
-api_token = "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" # get yours at hf.co/settings/token
-#data = query_text("The goal of life is [MASK].", model_id, api_token)
+api_token = "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"
 
 #vision transformer
 from transformers import ViTFeatureExtractor, ViTForImageClassification
@@ -205,6 +204,7 @@ if st.button('Send') or st.session_state.load_state:
     st.session_state.load_state = True
     with st.spinner('Checking for offensive speech...'):
         if user_input:
+            # Get the label-score pairs for the first example
             is_offensive = query_text(user_input, model_id_text, api_token)
             print(is_offensive)
             try:
@@ -215,7 +215,6 @@ if st.button('Send') or st.session_state.load_state:
             sorted_data = sorted(example_data, key=lambda x: x['score'], reverse=True)
             # Get the label with the highest score
             most_probable_label = sorted_data[0]['label']
-            print(most_probable_label)
             if most_probable_label == 'offensive':
                 show_popup()
             else:
@@ -268,7 +267,6 @@ for i in range(1,4):
     predicted_label = torch.argmax(outputs.logits).item()
     predicted_label = 'Offensive' if predicted_label == 1 else 'Non-Offensive'
     st.markdown(f'* Image number {i}: Classified as {predicted_label}')
-    #st.markdown('yo')
 
 
 st.markdown("## Automation Part 3 - Moderation System")
