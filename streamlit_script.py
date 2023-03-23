@@ -5,18 +5,7 @@ import pickle
 from PIL import Image
 pd.set_option("display.max_rows",40)
 # pd.set_option("display.max_columns", 10)
-import matplotlib.pyplot as plt
 
-import plotly.express as px
-import plotly.graph_objects as go
-
-from scipy.stats import norm
-import numpy as np
-
-from datetime import datetime
-
-
-from PIL import Image
 image = Image.open('img1.png')
 st.image(image)
 
@@ -245,8 +234,6 @@ if st.button('Get new messages'):
             show_second_popup()
         else:
             st.success("The text is clean!")
-
-st.markdown("## Moderation system")
 
 st.markdown("## Automation Part 2 - Offensive Bases Detection")
 
