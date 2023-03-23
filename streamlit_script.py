@@ -17,7 +17,7 @@ def query_text(payload, model_id, api_token):
 
 model_id_text = "cardiffnlp/twitter-roberta-base-offensive"
 model_id_image = "ogimgio/start-hack-supercell"
-api_token = "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" # get yours at hf.co/settings/tokens
+api_token = "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" # get yours at hf.co/settings/token
 #data = query_text("The goal of life is [MASK].", model_id, api_token)
 
 #vision transformer
