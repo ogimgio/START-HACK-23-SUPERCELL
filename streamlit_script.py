@@ -34,9 +34,9 @@ feature_extractor = ViTFeatureExtractor.from_pretrained(model_name)
 # Set the page title
 st.title("Our Solution - Team Inspect")
 st.markdown("## Automation Part 1 - Offensive Speech Reporter")
-st.markdown("This part defines the view from the bullier point of view, and then from the vulnerable victim.")
-st.markdown("### From the point of view of the bullier")
-st.markdown("You, as the bullier, write an offending message in the Supercell game environment")
+st.markdown("This part defines the bully and vulnerable victim point of views, in an ideal application.")
+st.markdown("### From the point of view of the bully")
+st.markdown("You, as the bully, write an offending message in the Supercell game environment")
 def show_popup():
     # Define the HTML and JavaScript code for the popup window
     html = """
@@ -222,6 +222,7 @@ if st.button('Send') or st.session_state.load_state:
 
 
 st.markdown("### From the point of view of the vulnerable person")
+st.markdown("As the victim, this is what you would see.")
 
 if st.button('Get new messages'):
     with st.spinner('Checking for offensive speech...'):
@@ -238,6 +239,7 @@ if st.button('Get new messages'):
             st.success("The text is clean!")
 
 st.markdown("## Automation Part 2 - Offensive Bases Detection")
+st.markdown("This section includes our model used for Image Detection. Try it on these three images below!")
 
 image = Image.open('images/1.jpg')
 
@@ -245,30 +247,35 @@ col1, col2, col3 = st.columns(3)
 
 with col1:
     image = Image.open('images/1.jpg')
-    st.image(image, caption='Non-Offensive Image')
+    st.image(image, caption='Ground truth: Non-Offensive Image')
 
 with col2:
     image = Image.open('images/2.jpg')
-    st.image(image, caption='Offensive Image')
+    st.image(image, caption='Ground truth: Offensive Image')
 
 
 
 with col3:
     image = Image.open('images/3.jpg')
-    st.image(image, caption='Offensive Image')
+    st.image(image, caption='Ground truth: Offensive Image')
 
 st.markdown('The output of of the three images is the following:')
-for i in range(1,4):
-    # load the input image and preprocess it
-    image = Image.open('images/'+str(i) + '.jpg')
-    inputs = feature_extractor(images=image, return_tensors='pt')
-    # perform inference and get the predicted label
-    outputs = model(**inputs)
-    predicted_label = torch.argmax(outputs.logits).item()
-    predicted_label = 'Offensive' if predicted_label == 1 else 'Non-Offensive'
-    st.markdown(f'* Image number {i}: Classified as {predicted_label}')
+checkbox_clicked = False
+if st.checkbox('Run Image detector',disabled=checkbox_clicked):
+    with st.spinner('Detecting offensive images...'):
+        checkbox_clicked = True
+        for i in range(1,4):
+            # load the input image and preprocess it
+            image = Image.open('images/'+str(i) + '.jpg')
+            inputs = feature_extractor(images=image, return_tensors='pt')
+            # perform inference and get the predicted label
+            outputs = model(**inputs)
+            predicted_label = torch.argmax(outputs.logits).item()
+            predicted_label = 'Offensive' if predicted_label == 1 else 'Non-Offensive'
+            st.markdown(f'* Image number {i}: Classified as {predicted_label}')
 
 
-st.markdown("## Automation Part 3 - Moderation System")
+st.markdown("## Moderation System")
+st.markdown("More on the full description on GitHub.")
 image = Image.open('images/moderator_sys.jpeg')
 st.image(image, caption='Offensive Image')
