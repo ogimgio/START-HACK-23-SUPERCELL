@@ -2,6 +2,9 @@
 
 This is the repo for the StartHack event, this time the successful team Inspect took the SUPERCELL challenge.
 
+If you prefer Notion, you can find the description here: https://www.notion.so/StartHack-SUPERCELL-CHALLENGE-by-Inspect-3702ee1e57ad4301b917c0f9f9622cfb?pvs=4
+
+
 ## First Principle Thinking: the m**otivation behind our approach**
 
 In an ideal world, when a cyberbullying event occurs, either the **targeted** **person** or a **witness** will **alert a moderator** through some sort of reporting. But in the real world, a player could be targeted in such a way that they feel threatened and isolated, other times they may not understand the insidious nature of the disruptive behaviour. In both cases, it’s **unlikely** that the behaviour will be **reported**.
