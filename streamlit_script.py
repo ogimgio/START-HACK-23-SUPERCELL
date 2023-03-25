@@ -17,7 +17,7 @@ def query_text(payload, model_id, api_token):
 
 model_id_text = "cardiffnlp/twitter-roberta-base-offensive"
 model_id_image = "ogimgio/start-hack-supercell"
-api_token = "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"
+api_token = "xxx"
 
 #vision transformer
 from transformers import ViTFeatureExtractor, ViTForImageClassification
